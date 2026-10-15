@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopScore Academy Tanzania - Primary Online Learning & Tutoring</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#032256',
+                            dark: '#011538',
+                            light: '#0a3882'
+                        },
+                        lime: {
+                            DEFAULT: '#8cc63f',
+                            hover: '#7ab332',
+                            light: '#f1f8e9'
+                        },
+                        brandOrange: {
+                            DEFAULT: '#ff7a00',
+                            hover: '#e06b00',
+                            light: '#fff4eb'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-pattern {
+            background-color: #032256;
+            background-image: radial-gradient(#8cc63f 0.75px, transparent 0.75px), radial-gradient(#ff7a00 0.75px, #032256 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            background-opacity: 0.15;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+    <!-- Top Announcement & Contact Bar -->
+    <div class="bg-navy-dark text-slate-200 text-xs py-2 px-4 border-b border-navy-light/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <a href="tel:+255765005391" class="hover:text-lime flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-phone text-lime"></i> +255 765 005 391
+                </a>
+                <a href="mailto:topscoretanzania@gmail.com" class="hover:text-lime flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-envelope text-brandOrange"></i> topscoretanzania@gmail.com
+                </a>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="bg-lime/20 text-lime px-2 py-0.5 rounded text-[10px] font-semibold tracking-wide uppercase">Primary Standards 1 - 7</span>
+                <span class="text-slate-400">|</span>
+                <span class="text-slate-300"><i class="fa-solid fa-location-dot text-brandOrange mr-1"></i> Tanzania Curriculum</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="bg-navy text-white sticky top-0 z-40 shadow-lg border-b border-navy-light/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+                    <div class="w-12 h-12 rounded-full border-2 border-lime bg-navy flex items-center justify-center p-1 shadow-md hover:scale-105 transition transform">
+                        <div class="w-full h-full rounded-full border border-brandOrange flex flex-col items-center justify-center text-center leading-none">
+                            <i class="fa-solid fa-graduation-cap text-lime text-xs"></i>
+                            <span class="text-[9px] font-bold text-white tracking-tighter">TOP</span>
+                            <span class="text-[8px] font-bold text-brandOrange tracking-tighter">SCORE</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-white block leading-none">TopScore <span class="text-lime">Academy</span></span>
+                        <span class="text-xs text-brandOrange font-semibold tracking-wider uppercase">Tanzania</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2 text-sm font-medium">
+                    <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-3 py-2 rounded-lg text-white hover:bg-navy-light/50 transition">Home</button>
+                    <button onclick="switchTab('teachers')" id="nav-teachers" class="nav-btn px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-navy-light/50 transition">Find Teachers</button>
+                    <button onclick="switchTab('live')" id="nav-live" class="nav-btn px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-navy-light/50 transition flex items-center gap-1.5">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brandOrange opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-brandOrange"></span>
+                        </span>
+                        Live Classes
+                    </button>
+                    <button onclick="switchTab('homework')" id="nav-homework" class="nav-btn px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-navy-light/50 transition">Homework Help</button>
+                    <button onclick="switchTab('library')" id="nav-library" class="nav-btn px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-navy-light/50 transition">Library & Books</button>
+                    <button onclick="switchTab('pricing')" id="nav-pricing" class="nav-btn px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-navy-light/50 transition">Pricing & Packages</button>
+                </nav>
+
+                <!-- Header CTA Buttons -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <button onclick="openModal('authModal')" class="bg-navy-light hover:bg-slate-700 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-lg border border-slate-500/40 transition">
+                        <i class="fa-solid fa-user-plus mr-1.5 text-lime"></i> Register / Login
+                    </button>
+                    <button onclick="openModal('paymentModal')" class="bg-brandOrange hover:bg-brandOrange-hover text-white font-bold text-xs sm:text-sm px-4 py-2.5 rounded-lg shadow-md hover:shadow-lg transition">
+                        <i class="fa-solid fa-wallet mr-1.5"></i> Pay Fees
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center gap-2">
+                    <button onclick="openModal('paymentModal')" class="bg-brandOrange text-white text-xs p-2 rounded-lg sm:hidden">
+                        <i class="fa-solid fa-wallet"></i>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="text-slate-200 hover:text-white p-2 rounded-lg hover:bg-navy-light focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-navy-dark border-t border-navy-light/50 px-4 pt-3 pb-6 space-y-2">
+            <button onclick="switchTab('home')" class="w-full text-left px-3 py-2 rounded-lg text-white hover:bg-navy-light transition flex items-center gap-3"><i class="fa-solid fa-house text-lime w-5"></i> Home</button>
+            <button onclick="switchTab('teachers')" class="w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-navy-light transition flex items-center gap-3"><i class="fa-solid fa-chalkboard-user text-lime w-5"></i> Find Teachers</button>
+            <button onclick="switchTab('live')" class="w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-navy-light transition flex items-center gap-3"><i class="fa-solid fa-video text-brandOrange w-5"></i> Live Classes</button>
+            <button onclick="switchTab('homework')" class="w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-navy-light transition flex items-center gap-3"><i class="fa-solid fa-pen-ruler text-lime w-5"></i> Homework Help</button>
+            <button onclick="switchTab('library')" class="w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-navy-light transition flex items-center gap-3"><i class="fa-solid fa-book-open text-brandOrange w-5"></i> Library & Books</button>
+            <button onclick="switchTab('pricing')" class="w-full text-left px-3 py-2 rounded-lg text-slate-200 hover:bg-navy-light transition flex items-center gap-3"><i class="fa-solid fa-tags text-lime w-5"></i> Pricing & Packages</button>
+            <div class="pt-3 border-t border-slate-700 flex flex-col gap-2">
+                <button onclick="openModal('authModal')" class="w-full bg-navy-light text-white font-semibold py-2.5 rounded-lg border border-slate-600 text-center"><i class="fa-solid fa-user-plus mr-2 text-lime"></i> Register / Login</button>
+                <button onclick="openModal('paymentModal')" class="w-full bg-brandOrange text-white font-bold py-2.5 rounded-lg text-center shadow"><i class="fa-solid fa-wallet mr-2"></i> Pay / Subscribe</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+
+        <!-- ================= HOME SECTION ================= -->
+        <section id="tab-home" class="tab-content">
+            <!-- Hero Section -->
+            <div class="bg-pattern text-white py-12 lg:py-20 relative overflow-hidden border-b border-navy-light">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                            <div class="inline-flex items-center gap-2 bg-navy-light/80 border border-lime/40 text-lime px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm">
+                                <i class="fa-solid fa-star text-brandOrange"></i> #1 Primary E-Learning Platform in Tanzania
+                            </div>
+                            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+                                Academic Excellence for Primary Students in <span class="text-lime">Tanzania</span>
+                            </h1>
+                            <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                                Get instant homework help, join interactive live classes with expert Tanzanian tutors, download curriculum workbooks, and boost performance in <strong class="text-white">Mathematics, Kiswahili, English, Science, and Geography</strong>.
+                            </p>
+                            
+                            <!-- Search / Quick Subject Selection -->
+                            <div class="bg-white/10 p-2 sm:p-3 rounded-2xl backdrop-blur-md border border-white/20 shadow-2xl max-w-xl">
+                                <div class="flex flex-col sm:flex-row gap-2">
+                                    <div class="relative flex-1">
+                                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3.5 text-slate-400"></i>
+                                        <input type="text" id="heroSearchInput" placeholder="Search subjects, topics, or tutors..." class="w-full pl-10 pr-4 py-2.5 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-lime">
+                                    </div>
+                                    <button onclick="handleHeroSearch()" class="bg-lime hover:bg-lime-hover text-navy font-bold px-6 py-2.5 rounded-xl transition shadow text-sm">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- CTA Buttons -->
+                            <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+                                <button onclick="switchTab('teachers')" class="bg-brandOrange hover:bg-brandOrange-hover text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-orange-500/20 transition flex items-center gap-2">
+                                    <i class="fa-solid fa-chalkboard-user"></i> Find a Tutor
+                                </button>
+                                <button onclick="switchTab('live')" class="bg-navy-light hover:bg-slate-700 text-white border border-lime/50 font-bold px-6 py-3 rounded-xl shadow transition flex items-center gap-2">
+                                    <i class="fa-solid fa-video text-lime"></i> Join Live Class
+                                </button>
+                                <button onclick="openModal('authModal')" class="bg-white text-navy font-bold px-6 py-3 rounded-xl shadow hover:bg-slate-100 transition flex items-center gap-2">
+                                    <i class="fa-solid fa-user-plus text-brandOrange"></i> Register Free
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Hero Graphic / Cards Preview -->
+                        <div class="lg:col-span-5 relative flex justify-center">
+                            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 shadow-2xl w-full max-w-md relative">
+                                <!-- Badge -->
+                                <div class="absolute -top-4 -right-4 bg-brandOrange text-white font-extrabold px-4 py-1.5 rounded-full text-xs shadow-lg animate-bounce">
+                                    Standard 1 - 7 Ready
+                                </div>
+                                <h3 class="font-bold text-lime text-sm tracking-wider uppercase mb-4 flex items-center gap-2">
+                                    <i class="fa-solid fa-shapes"></i> Key Subjects Covered
+                                </h3>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-3 rounded-xl bg-navy/60 border border-navy-light hover:border-lime transition">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">
+                                                <i class="fa-solid fa-calculator text-lg"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-sm text-white">Mathematics</div>
+                                                <div class="text-xs text-slate-300">Numbers, Fractions, Algebra</div>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs bg-lime/20 text-lime font-bold px-2.5 py-1 rounded-md">Std 1-7</span>
+                                    </div>
+
+                                    <div class="flex items-center justify-between p-3 rounded-xl bg-navy/60 border border-navy-light hover:border-lime transition">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+                                                <i class="fa-solid fa-language text-lg"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-sm text-white">Kiswahili</div>
+                                                <div class="text-xs text-slate-300">Insha, Sarufi, Methali</div>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs bg-lime/20 text-lime font-bold px-2.5 py-1 rounded-md">Std 1-7</span>
+                                    </div>
+
+                                    <div class="flex items-center justify-between p-3 rounded-xl bg-navy/60 border border-navy-light hover:border-lime transition">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
+                                                <i class="fa-solid fa-book text-lg"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-sm text-white">English Language</div>
+                                                <div class="text-xs text-slate-300">Grammar, Vocabulary, Essays</div>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs bg-lime/20 text-lime font-bold px-2.5 py-1 rounded-md">Std 1-7</span>
+                                    </div>
+
+                                    <div class="flex items-center justify-between p-3 rounded-xl bg-navy/60 border border-navy-light hover:border-lime transition">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold">
+                                                <i class="fa-solid fa-flask text-lg"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-sm text-white">Science & Tech</div>
+                                                <div class="text-xs text-slate-300">Biology, Physics, Health</div>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs bg-lime/20 text-lime font-bold px-2.5 py-1 rounded-md">Std 1-7</span>
+                                    </div>
+
+                                    <div class="flex items-center justify-between p-3 rounded-xl bg-navy/60 border border-navy-light hover:border-lime transition">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold">
+                                                <i class="fa-solid fa-earth-africa text-lg"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-sm text-white">Geography & Socials</div>
+                                                <div class="text-xs text-slate-300">Environment, Maps, History</div>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs bg-lime/20 text-lime font-bold px-2.5 py-1 rounded-md">Std 1-7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-navy">Designed for Student Success</h2>
+                    <p class="text-slate-600 mt-2">Comprehensive learning tools tailored to the NECTA & Ministry of Education primary syllabus.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('homework')">
+                        <div class="w-12 h-12 rounded-xl bg-lime-light text-lime-hover flex items-center justify-center text-xl mb-4 font-bold">
+                            <i class="fa-solid fa-file-pen text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-navy mb-2">Homework Helper</h3>
+                        <p class="text-slate-600 text-sm mb-4">Snap or type primary homework questions and get step-by-step guidance from qualified tutors.</p>
+                        <span class="text-lime-hover font-bold text-xs flex items-center gap-1">Get Help Now <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('teachers')">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-4 font-bold">
+                            <i class="fa-solid fa-chalkboard-user text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-navy mb-2">1-on-1 Tutors</h3>
+                        <p class="text-slate-600 text-sm mb-4">Book verified primary teachers in Tanzania for private online interactive tuition.</p>
+                        <span class="text-blue-600 font-bold text-xs flex items-center gap-1">Browse Teachers <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('live')">
+                        <div class="w-12 h-12 rounded-xl bg-brandOrange-light text-brandOrange flex items-center justify-center text-xl mb-4 font-bold">
+                            <i class="fa-solid fa-display text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-navy mb-2">Live Virtual Classes</h3>
+                        <p class="text-slate-600 text-sm mb-4">Interactive group live streams with virtual whiteboards, hand-raising, and real-time chat.</p>
+                        <span class="text-brandOrange font-bold text-xs flex items-center gap-1">View Schedule <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('library')">
+                        <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl mb-4 font-bold">
+                            <i class="fa-solid fa-book-bookmark text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-navy mb-2">Books & Workbooks</h3>
+                        <p class="text-slate-600 text-sm mb-4">Access Standard 1-7 digital textbooks, interactive revision workbooks, and past papers.</p>
+                        <span class="text-purple-600 font-bold text-xs flex items-center gap-1">Open Library <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Money Banner -->
+            <div class="bg-slate-100 py-12 border-y border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Convenient Payments across Tanzania</p>
+                    <h3 class="text-xl font-bold text-navy mb-6">Pay Securely via Mobile Money or Card</h3>
+                    <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10">
+                        <div class="bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-200 flex items-center gap-2 font-bold text-red-600 text-sm">
+                            <i class="fa-solid fa-mobile-screen-button text-xl"></i> M-Pesa (Vodacom)
+                        </div>
+                        <div class="bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-200 flex items-center gap-2 font-bold text-blue-600 text-sm">
+                            <i class="fa-solid fa-mobile-screen-button text-xl"></i> Tigo Pesa
+                        </div>
+                        <div class="bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-200 flex items-center gap-2 font-bold text-rose-600 text-sm">
+                            <i class="fa-solid fa-mobile-screen-button text-xl"></i> Airtel Money
+                        </div>
+                        <div class="bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-200 flex items-center gap-2 font-bold text-orange-500 text-sm">
+                            <i class="fa-solid fa-mobile-screen-button text-xl"></i> HaloPesa
+                        </div>
+                        <div class="bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-200 flex items-center gap-2 font-bold text-slate-700 text-sm">
+                            <i class="fa-solid fa-credit-card text-xl"></i> Visa / Mastercard
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FIND TEACHERS SECTION ================= -->
+        <section id="tab-teachers" class="tab-content hidden py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                    <div>
+                        <h1 class="text-3xl font-black text-navy">Qualified Tanzanian Primary Teachers</h1>
+                        <p class="text-slate-600 text-sm mt-1">Book 1-on-1 private tutoring sessions for Mathematics, Kiswahili, English, Science & Geography.</p>
+                    </div>
+                    <button onclick="openModal('authModal')" class="bg-navy hover:bg-navy-light text-white font-bold text-sm px-4 py-2.5 rounded-xl border border-navy-light shadow-sm self-start md:self-auto">
+                        <i class="fa-solid fa-user-tie text-lime mr-1.5"></i> Register as a Teacher
+                    </button>
+                </div>
+
+                <!-- Filter Controls -->
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 mb-8 grid sm:grid-cols-12 gap-4">
+                    <div class="sm:col-span-4">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Filter Subject</label>
+                        <select id="teacherSubjectFilter" onchange="renderTeachers()" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-xl p-2.5 focus:ring-lime focus:border-lime">
+                            <option value="All">All Subjects</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="English">English</option>
+                            <option value="Science">Science</option>
+                            <option value="Kiswahili">Kiswahili</option>
+                            <option value="Geography">Geography</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-4">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Grade / Standard Level</label>
+                        <select id="teacherGradeFilter" onchange="renderTeachers()" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-xl p-2.5 focus:ring-lime focus:border-lime">
+                            <option value="All">All Standards (Std 1 - Std 7)</option>
+                            <option value="Std 1-3">Lower Primary (Std 1 - 3)</option>
+                            <option value="Std 4-7">Upper Primary (Std 4 - 7)</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-4 flex items-end">
+                        <button onclick="resetTeacherFilters()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm py-2.5 rounded-xl transition">
+                            <i class="fa-solid fa-rotate-right mr-1"></i> Reset Filters
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Teachers Directory Grid -->
+                <div id="teachersGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dynamic rendering via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LIVE CLASSES SECTION ================= -->
+        <section id="tab-live" class="tab-content hidden py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Header -->
+                <div class="mb-8">
+                    <div class="inline-flex items-center gap-2 bg-brandOrange/10 text-brandOrange font-bold text-xs px-3 py-1 rounded-full mb-2">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brandOrange opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-brandOrange"></span>
+                        </span>
+                        Interactive Virtual Classroom
+                    </div>
+                    <h1 class="text-3xl font-black text-navy">Live Online Classes</h1>
+                    <p class="text-slate-600 text-sm">Join daily live virtual interactive lessons or test the virtual classroom simulator below.</p>
+                </div>
+
+                <!-- Live Classroom Simulator Block -->
+                <div class="bg-navy rounded-3xl p-4 sm:p-6 shadow-2xl border border-navy-light text-white mb-12">
+                    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-navy-light pb-4 mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-red-600 text-white font-extrabold text-xs uppercase px-2.5 py-1 rounded-md animate-pulse">LIVE NOW</span>
+                            <div>
+                                <h3 class="font-bold text-base text-white" id="liveStreamTitle">Standard 6 Mathematics: Fractions & Decimals</h3>
+                                <p class="text-xs text-slate-300">Teacher: Mwalimu Juma Hamisi • Standard 6 • TopScore Classroom 1</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-navy-light text-lime text-xs font-semibold px-3 py-1 rounded-lg border border-lime/30">
+                                <i class="fa-solid fa-users mr-1"></i> <span id="studentCount">34</span> Students Online
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Simulator Content Split -->
+                    <div class="grid lg:grid-cols-12 gap-4">
+                        <!-- Simulated Stream / Whiteboard Container -->
+                        <div class="lg:col-span-8 bg-navy-dark rounded-2xl overflow-hidden border border-navy-light flex flex-col relative min-h-[380px]">
+                            <!-- Video / Whiteboard Header -->
+                            <div class="bg-slate-900/80 px-4 py-2 border-b border-slate-800 flex justify-between items-center text-xs">
+                                <div class="flex items-center gap-2">
+                                    <button onclick="toggleBoardMode('board')" id="btnBoardMode" class="bg-lime text-navy font-bold px-2.5 py-1 rounded text-xs">Whiteboard</button>
+                                    <button onclick="toggleBoardMode('video')" id="btnVideoMode" class="bg-slate-700 text-white font-bold px-2.5 py-1 rounded text-xs">Teacher Video</button>
+                                </div>
+                                <div class="flex items-center gap-2 text-slate-400">
+                                    <span>Resolution: 720p HD</span>
+                                </div>
+                            </div>
+
+                            <!-- Whiteboard View -->
+                            <div id="whiteboardContainer" class="flex-grow p-4 relative flex flex-col justify-between bg-slate-900">
+                                <canvas id="whiteboardCanvas" class="w-full h-64 bg-slate-950 rounded-xl border border-slate-800 cursor-crosshair"></canvas>
+                                
+                                <div class="mt-3 flex items-center justify-between bg-slate-800/80 p-2 rounded-xl text-xs flex-wrap gap-2">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-slate-300 font-bold">Tools:</span>
+                                        <button onclick="setDrawColor('#8cc63f')" class="w-6 h-6 rounded-full bg-lime border border-white focus:ring-2"></button>
+                                        <button onclick="setDrawColor('#ff7a00')" class="w-6 h-6 rounded-full bg-brandOrange border border-white focus:ring-2"></button>
+                                        <button onclick="setDrawColor('#3b82f6')" class="w-6 h-6 rounded-full bg-blue-500 border border-white focus:ring-2"></button>
+                                        <button onclick="setDrawColor('#ffffff')" class="w-6 h-6 rounded-full bg-white border border-white focus:ring-2"></button>
+                                        <button onclick="clearCanvas()" class="bg-red-500/20 text-red-300 font-bold px-2 py-1 rounded hover:bg-red-500/30">Clear</button>
+                                    </div>
+                                    <div class="text-slate-400">
+                                        <i class="fa-solid fa-hand-pointer mr-1"></i> Interactive Drawing Area
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Video Stream Simulation (Hidden by default) -->
+                            <div id="videoContainer" class="hidden flex-grow p-8 flex flex-col items-center justify-center bg-slate-950 text-center">
+                                <div class="w-24 h-24 rounded-full border-4 border-lime overflow-hidden mb-4 shadow-lg">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=250" alt="Mwalimu Juma" class="w-full h-full object-cover">
+                                </div>
+                                <h4 class="font-bold text-white text-lg">Mwalimu Juma Hamisi</h4>
+                                <p class="text-lime text-xs font-semibold">Broadcasting Live • Mathematics Specialist</p>
+                                <p class="text-slate-400 text-xs mt-2 max-w-md">"Let's review problem #4 on multiplying mixed numbers. Raise your hand if you got 3 1/2!"</p>
+                            </div>
+
+                            <!-- Controls Toolbar -->
+                            <div class="bg-slate-900 px-4 py-3 border-t border-slate-800 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <button onclick="raiseHand()" id="handBtn" class="bg-navy-light hover:bg-slate-700 text-lime font-bold text-xs px-3 py-2 rounded-xl border border-lime/30 transition flex items-center gap-1.5">
+                                        <i class="fa-solid fa-hand"></i> Raise Hand
+                                    </button>
+                                    <button onclick="toggleAudio()" id="micBtn" class="bg-slate-800 text-slate-300 font-bold text-xs px-3 py-2 rounded-xl transition">
+                                        <i class="fa-solid fa-microphone-slash mr-1"></i> Muted
+                                    </button>
+                                </div>
+                                <div>
+                                    <button onclick="showToast('Class feedback recorded!')" class="bg-brandOrange hover:bg-brandOrange-hover text-white text-xs font-bold px-3 py-2 rounded-xl transition">
+                                        <i class="fa-solid fa-thumbs-up mr-1"></i> Understand
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Live Chat Panel -->
+                        <div class="lg:col-span-4 bg-navy-dark rounded-2xl border border-navy-light flex flex-col h-[400px]">
+                            <div class="bg-slate-900/90 px-4 py-2.5 border-b border-slate-800 font-bold text-xs text-lime flex justify-between items-center">
+                                <span><i class="fa-solid fa-comments mr-1.5"></i> Class Discussion</span>
+                                <span class="text-slate-400 font-normal">Standard 6</span>
+                            </div>
+
+                            <div id="liveChatBox" class="flex-grow p-3 space-y-3 overflow-y-auto text-xs custom-scrollbar">
+                                <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+                                    <div class="flex justify-between font-bold text-slate-300 mb-0.5">
+                                        <span>Baraka (Std 6)</span>
+                                        <span class="text-[10px] text-slate-500">10:02 AM</span>
+                                    </div>
+                                    <p class="text-slate-200">Teacher, please explain step 2 again for simplifying 12/16?</p>
+                                </div>
+
+                                <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+                                    <div class="flex justify-between font-bold text-lime mb-0.5">
+                                        <span>Mwalimu Juma (Tutor)</span>
+                                        <span class="text-[10px] text-slate-500">10:03 AM</span>
+                                    </div>
+                                    <p class="text-slate-200">Good question Baraka! We divide both numerator and denominator by 4.</p>
+                                </div>
+
+                                <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+                                    <div class="flex justify-between font-bold text-slate-300 mb-0.5">
+                                        <span>Neema (Std 6)</span>
+                                        <span class="text-[10px] text-slate-500">10:04 AM</span>
+                                    </div>
+                                    <p class="text-slate-200">Got 3/4! So simple now!</p>
+                                </div>
+                            </div>
+
+                            <div class="p-2.5 bg-slate-900 border-t border-slate-800">
+                                <form onsubmit="sendLiveChatMessage(event)" class="flex gap-2">
+                                    <input type="text" id="chatInput" placeholder="Ask teacher a question..." class="flex-grow bg-slate-950 border border-slate-800 text-white rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-lime">
+                                    <button type="submit" class="bg-lime hover:bg-lime-hover text-navy px-3 py-2 rounded-xl text-xs font-bold transition">
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Scheduled Live Classes -->
+                <h2 class="text-2xl font-bold text-navy mb-6">Upcoming Scheduled Live Classes</h2>
+                <div id="upcomingClassesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Javascript populates live class cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= HOMEWORK HELP SECTION ================= -->
+        <section id="tab-homework" class="tab-content hidden py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-8">
+                    
+                    <!-- Left: Homework Submission Form -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-10 h-10 rounded-xl bg-lime-light text-lime-hover flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-pen-ruler text-xl"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-xl font-black text-navy">Submit Homework Task</h2>
+                                    <p class="text-xs text-slate-500">Get step-by-step corrections within 2 hours</p>
+                                </div>
+                            </div>
+
+                            <form onsubmit="handleHomeworkSubmit(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Select Subject *</label>
+                                    <select id="hwSubject" required class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-sm focus:ring-lime focus:border-lime">
+                                        <option value="Mathematics">Mathematics</option>
+                                        <option value="Kiswahili">Kiswahili</option>
+                                        <option value="English">English</option>
+                                        <option value="Science">Science & Technology</option>
+                                        <option value="Geography">Geography & Social Studies</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Grade / Standard *</label>
+                                    <select id="hwGrade" required class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-sm focus:ring-lime focus:border-lime">
+                                        <option value="Standard 1">Standard 1</option>
+                                        <option value="Standard 2">Standard 2</option>
+                                        <option value="Standard 3">Standard 3</option>
+                                        <option value="Standard 4">Standard 4</option>
+                                        <option value="Standard 5">Standard 5</option>
+                                        <option value="Standard 6" selected>Standard 6</option>
+                                        <option value="Standard 7">Standard 7</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Homework Details / Question *</label>
+                                    <textarea id="hwQuestion" rows="4" required placeholder="Type your question here or describe the homework task in detail..." class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm focus:ring-lime focus:border-lime"></textarea>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Attach Photo or Worksheet (Optional)</label>
+                                    <div class="border-2 border-dashed border-slate-300 rounded-xl p-4 text-center hover:bg-slate-50 transition cursor-pointer" onclick="document.getElementById('hwFile').click()">
+                                        <i class="fa-solid fa-cloud-arrow-up text-2xl text-slate-400 mb-1"></i>
+                                        <p class="text-xs text-slate-600 font-medium" id="fileNameDisplay">Click to upload homework photo / PDF</p>
+                                        <span class="text-[10px] text-slate-400">PNG, JPG, PDF up to 10MB</span>
+                                        <input type="file" id="hwFile" class="hidden" onchange="updateFileName(this)">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="w-full bg-lime hover:bg-lime-hover text-navy font-bold py-3 rounded-xl transition shadow">
+                                    <i class="fa-solid fa-paper-plane mr-2"></i> Submit for Review
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Right: Task Tracker & Recent Feedback -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <!-- Stats Header -->
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center shadow-sm">
+                                <div class="text-2xl font-black text-navy" id="statCompleted">14</div>
+                                <div class="text-xs text-slate-500 font-medium">Completed Tasks</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center shadow-sm">
+                                <div class="text-2xl font-black text-brandOrange" id="statPending">2</div>
+                                <div class="text-xs text-slate-500 font-medium">Under Review</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center shadow-sm">
+                                <div class="text-2xl font-black text-lime-hover" id="statPoints">350</div>
+                                <div class="text-xs text-slate-500 font-medium">Star Points Earned</div>
+                            </div>
+                        </div>
+
+                        <!-- Tasks List -->
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
+                            <h3 class="font-bold text-navy text-lg mb-4 flex items-center justify-between">
+                                <span>Recent Homework Tasks</span>
+                                <span class="text-xs text-slate-500 font-normal">Updated live</span>
+                            </h3>
+
+                            <div id="homeworkTrackerList" class="space-y-4">
+                                <!-- Dynamic items rendered by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ONLINE BOOKS & WORKBOOKS LIBRARY ================= -->
+        <section id="tab-library" class="tab-content hidden py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                    <div>
+                        <h1 class="text-3xl font-black text-navy">Primary e-Library & Workbooks</h1>
+                        <p class="text-slate-600 text-sm mt-1">Read syllabus-aligned textbooks, past primary papers, and perform interactive quiz workbooks.</p>
+                    </div>
+                    <!-- Subject Tabs -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterLibrary('All')" class="lib-tab active bg-navy text-white px-3 py-1.5 rounded-lg text-xs font-bold">All Books</button>
+                        <button onclick="filterLibrary('Mathematics')" class="lib-tab bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-slate-300">Math</button>
+                        <button onclick="filterLibrary('Kiswahili')" class="lib-tab bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-slate-300">Kiswahili</button>
+                        <button onclick="filterLibrary('English')" class="lib-tab bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-slate-300">English</button>
+                        <button onclick="filterLibrary('Science')" class="lib-tab bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-slate-300">Science</button>
+                        <button onclick="filterLibrary('Geography')" class="lib-tab bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-slate-300">Geography</button>
+                    </div>
+                </div>
+
+                <!-- Books Grid -->
+                <div id="booksGrid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Dynamic rendering by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PRICING & PACKAGES SECTION ================= -->
+        <section id="tab-pricing" class="tab-content hidden py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="bg-brandOrange/10 text-brandOrange font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Simple & Affordable Pricing</span>
+                    <h1 class="text-3xl font-black text-navy mt-2">Invest in Your Child's Bright Future</h1>
+                    <p class="text-slate-600 text-sm mt-2">Choose flexible daily, monthly, or termly plans with easy Tanzanian mobile money payments.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Plan 1: Daily Access -->
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Starter Pass</span>
+                            <h3 class="text-xl font-bold text-navy mt-1">Daily Access</h3>
+                            <div class="my-4">
+                                <span class="text-3xl font-extrabold text-navy">TZS 3,000</span>
+                                <span class="text-slate-500 text-xs">/ day (~$1.20)</span>
+                            </div>
+                            <ul class="space-y-3 text-sm text-slate-600 mb-6">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-hover"></i> 24-hour full portal access</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-hover"></i> Up to 3 homework questions answered</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-hover"></i> Access to all live class streams for 1 day</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-hover"></i> e-Library book previews</li>
+                            </ul>
+                        </div>
+                        <button onclick="openModal('paymentModal', 'Daily Access', '3000')" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl transition text-center text-sm">
+                            Select Daily Pass
+                        </button>
+                    </div>
+
+                    <!-- Plan 2: Monthly Popular -->
+                    <div class="bg-navy p-6 rounded-3xl border-2 border-lime shadow-xl text-white flex flex-col justify-between relative transform lg:-translate-y-2">
+                        <div class="absolute -top-3 right-6 bg-brandOrange text-white font-black text-[10px] uppercase px-3 py-1 rounded-full">
+                            Most Popular
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-lime uppercase tracking-widest">Smart Parent Choice</span>
+                            <h3 class="text-2xl font-bold text-white mt-1">Monthly Plan</h3>
+                            <div class="my-4">
+                                <span class="text-4xl font-black text-white">TZS 35,000</span>
+                                <span class="text-slate-300 text-xs">/ month (~$14.00)</span>
+                            </div>
+                            <ul class="space-y-3 text-sm text-slate-200 mb-6">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime"></i> Unlimited Homework Help in all 5 subjects</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime"></i> Unlimited Live Virtual Classes</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime"></i> Full access to e-Books & Workbooks</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime"></i> Monthly student progress report card</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime"></i> Priority Teacher Booking</li>
+                            </ul>
+                        </div>
+                        <button onclick="openModal('paymentModal', 'Monthly Plan', '35000')" class="w-full bg-lime hover:bg-lime-hover text-navy font-extrabold py-3 rounded-xl transition text-center text-sm shadow-lg">
+                            Subscribe Monthly
+                        </button>
+                    </div>
+
+                    <!-- Plan 3: Termly Best Value -->
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Full School Term</span>
+                            <h3 class="text-xl font-bold text-navy mt-1">Termly VIP Pass</h3>
+                            <div class="my-4">
+                                <span class="text-3xl font-extrabold text-navy">TZS 90,000</span>
+                                <span class="text-slate-500 text-xs">/ term (~$35.00)</span>
+                            </div>
+                            <ul class="space-y-3 text-sm text-slate-600 mb-6">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-hover"></i> 4 months complete access</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-hover"></i> Everything in Monthly Plan</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-hover"></i> 2 Free 1-on-1 private tutor sessions</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-lime-hover"></i> NECTA Past Exam Preparation Package</li>
+                            </ul>
+                        </div>
+                        <button onclick="openModal('paymentModal', 'Termly VIP Pass', '90000')" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl transition text-center text-sm">
+                            Get Termly VIP
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-navy-dark text-slate-300 text-sm border-t border-navy-light pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-8 border-b border-navy-light/50">
+                
+                <!-- Col 1: Branding -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full border border-lime bg-navy flex items-center justify-center p-1">
+                            <i class="fa-solid fa-graduation-cap text-lime text-xs"></i>
+                        </div>
+                        <span class="text-xl font-extrabold text-white">TopScore <span class="text-lime">Academy</span></span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        TopScore Tanzania is dedicated to empowering primary school children with engaging digital learning tools, expert teachers, and comprehensive revision resources across Tanzania.
+                    </p>
+                </div>
+
+                <!-- Col 2: Featured Subjects -->
+                <div>
+                    <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider">Primary Subjects</h4>
+                    <ul class="space-y-1.5 text-xs text-slate-400">
+                        <li><a href="#" onclick="switchTab('teachers')" class="hover:text-lime"><i class="fa-solid fa-angle-right mr-1 text-lime"></i> Mathematics (Std 1 - 7)</a></li>
+                        <li><a href="#" onclick="switchTab('teachers')" class="hover:text-lime"><i class="fa-solid fa-angle-right mr-1 text-lime"></i> Kiswahili & Sarufi</a></li>
+                        <li><a href="#" onclick="switchTab('teachers')" class="hover:text-lime"><i class="fa-solid fa-angle-right mr-1 text-lime"></i> English Language</a></li>
+                        <li><a href="#" onclick="switchTab('teachers')" class="hover:text-lime"><i class="fa-solid fa-angle-right mr-1 text-lime"></i> Science & Technology</a></li>
+                        <li><a href="#" onclick="switchTab('teachers')" class="hover:text-lime"><i class="fa-solid fa-angle-right mr-1 text-lime"></i> Geography & Social Studies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Quick Navigation -->
+                <div>
+                    <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider">Quick Links</h4>
+                    <ul class="space-y-1.5 text-xs text-slate-400">
+                        <li><a href="#" onclick="switchTab('live')" class="hover:text-lime"><i class="fa-solid fa-angle-right mr-1 text-lime"></i> Live Virtual Classes</a></li>
+                        <li><a href="#" onclick="switchTab('homework')" class="hover:text-lime"><i class="fa-solid fa-angle-right mr-1 text-lime"></i> Submit Homework Questions</a></li>
+                        <li><a href="#" onclick="switchTab('library')" class="hover:text-lime"><i class="fa-solid fa-angle-right mr-1 text-lime"></i> e-Books & Revision Papers</a></li>
+                        <li><a href="#" onclick="openModal('paymentModal')" class="hover:text-lime"><i class="fa-solid fa-angle-right mr-1 text-lime"></i> Payment Options (M-Pesa, Tigo)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Official Contact Details -->
+                <div class="space-y-2 text-xs">
+                    <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider">Contact TopScore Tanzania</h4>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-lime"></i>
+                        <a href="tel:+255765005391" class="hover:text-white font-semibold text-slate-200">+255 765 005 391</a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-envelope text-brandOrange"></i>
+                        <a href="mailto:topscoretanzania@gmail.com" class="hover:text-white text-slate-200">topscoretanzania@gmail.com</a>
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-400">
+                        <i class="fa-solid fa-location-dot text-slate-400"></i>
+                        <span>Dar es Salaam / Arusha, Tanzania</span>
+                    </div>
+                    <div class="pt-2">
+                        <button onclick="openModal('authModal')" class="bg-brandOrange hover:bg-brandOrange-hover text-white text-xs font-bold px-3 py-2 rounded-lg transition w-full">
+                            Join TopScore Today
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+                <p>&copy; 2026 TopScore Academy Tanzania. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                    <a href="#" class="hover:text-white">Parents Guide</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= MODALS CONTAINER ================= -->
+
+    <!-- 1. AUTH / REGISTRATION MODAL -->
+    <div id="authModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-extrabold text-navy" id="authModalTitle">Register for TopScore</h3>
+                <button onclick="closeModal('authModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+
+            <!-- Role Selector Tabs -->
+            <div class="flex bg-slate-100 p-1 rounded-xl mb-4">
+                <button onclick="setAuthRole('student')" id="roleStudentBtn" class="flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow text-navy">Parent / Student</button>
+                <button onclick="setAuthRole('teacher')" id="roleTeacherBtn" class="flex-1 py-2 text-xs font-bold rounded-lg text-slate-600">Teacher / Tutor</button>
+            </div>
+
+            <form onsubmit="handleAuthSubmit(event)" class="space-y-3 text-xs sm:text-sm">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Full Name *</label>
+                    <input type="text" required placeholder="e.g. Asha Juma" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 focus:ring-lime focus:border-lime">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Phone Number (For M-Pesa/Tigo Updates) *</label>
+                    <input type="tel" required placeholder="+255 7XX XXX XXX" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 focus:ring-lime focus:border-lime">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Email Address *</label>
+                    <input type="email" required placeholder="parent@example.com" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 focus:ring-lime focus:border-lime">
+                </div>
+
+                <!-- Student specific fields -->
+                <div id="studentFields" class="space-y-3">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Student Class / Grade Level *</label>
+                        <select class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5">
+                            <option>Standard 1</option>
+                            <option>Standard 2</option>
+                            <option>Standard 3</option>
+                            <option>Standard 4</option>
+                            <option>Standard 5</option>
+                            <option selected>Standard 6</option>
+                            <option>Standard 7</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Teacher specific fields -->
+                <div id="teacherFields" class="hidden space-y-3">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Primary Subject Specialty *</label>
+                        <select class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5">
+                            <option>Mathematics</option>
+                            <option>Kiswahili</option>
+                            <option>English Language</option>
+                            <option>Science & Technology</option>
+                            <option>Geography & Social Studies</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Years of Teaching Experience *</label>
+                        <input type="number" placeholder="e.g. 5" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Create Password *</label>
+                    <input type="password" required placeholder="••••••••" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5">
+                </div>
+
+                <button type="submit" class="w-full bg-lime hover:bg-lime-hover text-navy font-bold py-3 rounded-xl transition shadow mt-2">
+                    Complete Registration
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. REQUEST TUTOR MODAL -->
+    <div id="requestTeacherModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-extrabold text-navy">Request Teacher Session</h3>
+                <button onclick="closeModal('requestTeacherModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+
+            <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-2xl mb-4 border border-slate-200">
+                <img id="modalTeacherImg" src="" alt="Teacher" class="w-12 h-12 rounded-full object-cover">
+                <div>
+                    <h4 class="font-bold text-navy text-sm" id="modalTeacherName">Teacher Name</h4>
+                    <span class="text-xs text-lime-hover font-semibold" id="modalTeacherSubject">Subject</span>
+                </div>
+            </div>
+
+            <form onsubmit="handleRequestTeacherSubmit(event)" class="space-y-3 text-xs sm:text-sm">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Preferred Date *</label>
+                    <input type="date" required class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Preferred Time Slot *</label>
+                    <select class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5">
+                        <option>Morning (9:00 AM - 11:00 AM)</option>
+                        <option>Afternoon (2:00 PM - 4:00 PM)</option>
+                        <option selected>Evening (5:00 PM - 7:00 PM)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Student Standard Level</label>
+                    <select class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5">
+                        <option>Standard 1 to 3</option>
+                        <option selected>Standard 4 to 7</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Specific Topics to Cover</label>
+                    <textarea rows="2" placeholder="e.g., Long division, Kiswahili Sarufi..." class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-brandOrange hover:bg-brandOrange-hover text-white font-bold py-3 rounded-xl transition shadow">
+                    Confirm & Send Session Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. PAYMENT MODAL (MOBILE MONEY / CARDS) -->
+    <div id="paymentModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-extrabold text-navy">Make Payment / Subscription</h3>
+                <button onclick="closeModal('paymentModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+
+            <!-- Selected Package Info -->
+            <div class="bg-navy p-4 rounded-2xl text-white mb-4 flex justify-between items-center">
+                <div>
+                    <div class="text-xs text-lime font-bold uppercase" id="payPackageTitle">Monthly Plan Subscription</div>
+                    <div class="text-xs text-slate-300">TopScore Primary Academy</div>
+                </div>
+                <div class="text-xl font-extrabold text-white" id="payPackageAmount">TZS 35,000</div>
+            </div>
+
+            <!-- Payment Method Selection -->
+            <div class="space-y-2 mb-4">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Choose Payment Method *</label>
+
+                <div class="grid grid-cols-2 gap-2">
+                    <label class="border-2 border-slate-200 p-2.5 rounded-xl flex items-center gap-2 cursor-pointer hover:border-lime transition">
+                        <input type="radio" name="payMethod" value="mpesa" checked class="text-lime focus:ring-lime">
+                        <span class="text-xs font-bold text-red-600">M-Pesa</span>
+                    </label>
+
+                    <label class="border-2 border-slate-200 p-2.5 rounded-xl flex items-center gap-2 cursor-pointer hover:border-lime transition">
+                        <input type="radio" name="payMethod" value="tigo" class="text-lime focus:ring-lime">
+                        <span class="text-xs font-bold text-blue-600">Tigo Pesa</span>
+                    </label>
+
+                    <label class="border-2 border-slate-200 p-2.5 rounded-xl flex items-center gap-2 cursor-pointer hover:border-lime transition">
+                        <input type="radio" name="payMethod" value="airtel" class="text-lime focus:ring-lime">
+                        <span class="text-xs font-bold text-rose-600">Airtel Money</span>
+                    </label>
+
+                    <label class="border-2 border-slate-200 p-2.5 rounded-xl flex items-center gap-2 cursor-pointer hover:border-lime transition">
+                        <input type="radio" name="payMethod" value="card" class="text-lime focus:ring-lime">
+                        <span class="text-xs font-bold text-slate-700"><i class="fa-solid fa-credit-card"></i> Card</span>
+                    </label>
+                </div>
+            </div>
+
+            <form onsubmit="handlePaymentSubmit(event)" class="space-y-3 text-xs sm:text-sm">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Mobile Money Phone Number *</label>
+                    <input type="tel" required value="+255 765 005 391" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 focus:ring-lime">
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl text-[11px] text-slate-600 border border-slate-200">
+                    <i class="fa-solid fa-shield-halved text-lime-hover mr-1"></i> A USSD prompt will be sent to your phone. Enter your PIN to complete transaction.
+                </div>
+
+                <button type="submit" id="paySubmitBtn" class="w-full bg-lime hover:bg-lime-hover text-navy font-bold py-3 rounded-xl transition shadow">
+                    Pay Now via Mobile Money
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 4. BOOK READER & QUIZ MODAL -->
+    <div id="bookReaderModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <div>
+                    <h3 class="text-lg font-extrabold text-navy" id="bookModalTitle">Book Preview</h3>
+                    <span class="text-xs text-lime-hover font-semibold" id="bookModalSubject">Subject</span>
+                </div>
+                <button onclick="closeModal('bookReaderModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+
+            <!-- Book Reader Tabs -->
+            <div class="flex border-b border-slate-200 mb-4">
+                <button onclick="toggleBookTab('read')" id="bookTabReadBtn" class="px-4 py-2 text-xs font-bold border-b-2 border-lime text-lime">Read Pages</button>
+                <button onclick="toggleBookTab('quiz')" id="bookTabQuizBtn" class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-navy">Practice Quiz</button>
+            </div>
+
+            <!-- Reader Content -->
+            <div id="bookReadView" class="space-y-4">
+                <div class="bg-amber-50/50 p-6 rounded-2xl border border-amber-200 font-serif text-slate-800 text-sm leading-relaxed space-y-3">
+                    <h4 class="font-bold text-navy font-sans text-base" id="bookChapterTitle">Chapter 1: Key Concepts</h4>
+                    <p id="bookExcerptText">
+                        Welcome to TopScore Primary Learning. This preview interactive text provides basic foundational exercises designed specifically for Standard school students in Tanzania.
+                    </p>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 font-sans text-xs my-3">
+                        <strong class="text-brandOrange"><i class="fa-solid fa-lightbulb"></i> Key Tip:</strong> Always practice revision questions daily to ensure top performance in national assessments.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Content (Hidden by default) -->
+            <div id="bookQuizView" class="hidden space-y-4">
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                    <span class="text-xs font-bold text-brandOrange uppercase">Question 1 of 1</span>
+                    <h4 class="font-bold text-navy text-sm mt-1" id="quizQuestion">Select the correct answer?</h4>
+
+                    <div class="mt-3 space-y-2" id="quizOptionsContainer">
+                        <!-- Rendered by JS -->
+                    </div>
+
+                    <div id="quizFeedback" class="hidden mt-3 p-3 rounded-xl text-xs font-bold"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-navy text-white px-5 py-3 rounded-2xl shadow-2xl border border-lime flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <i class="fa-solid fa-circle-check text-lime text-xl" id="toastIcon"></i>
+        <span class="text-sm font-semibold" id="toastMessage">Notification message</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DATA STORES
+        const teachersData = [
+            {
+                id: 1,
+                name: "Mwalimu Juma Hamisi",
+                subject: "Mathematics",
+                grade: "Std 4-7",
+                rating: 4.9,
+                reviews: 42,
+                experience: "8 Yrs Experience",
+                price: "TZS 15,000 / hr",
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=250",
+                bio: "Specializes in Standard 4-7 Mathematics, fractions, algebra, and NECTA exam techniques."
+            },
+            {
+                id: 2,
+                name: "Teacher Grace Kimaro",
+                subject: "English",
+                grade: "Std 1-3",
+                rating: 5.0,
+                reviews: 58,
+                experience: "6 Yrs Experience",
+                price: "TZS 12,000 / hr",
+                image: "https://images.unsplash.com/photo-1580894732413-b732049d5a71?auto=format&fit=crop&q=80&w=250",
+                bio: "Enthusiastic primary English tutor specializing in early phonics, reading fluency & vocabulary."
+            },
+            {
+                id: 3,
+                name: "Mwalimu Hassan Ally",
+                subject: "Kiswahili",
+                grade: "Std 4-7",
+                rating: 4.8,
+                reviews: 31,
+                experience: "10 Yrs Experience",
+                price: "TZS 14,000 / hr",
+                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250",
+                bio: "Expert in Kiswahili Sarufi, Insha writing, Methali, and primary school language composition."
+            },
+            {
+                id: 4,
+                name: "Teacher Neema Shirima",
+                subject: "Science",
+                grade: "Std 4-7",
+                rating: 4.9,
+                reviews: 49,
+                experience: "7 Yrs Experience",
+                price: "TZS 15,000 / hr",
+                image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250",
+                bio: "Passionate primary Science teacher explaining living organisms, health, environment & technology."
+            },
+            {
+                id: 5,
+                name: "Mwalimu Emmanuel Mtui",
+                subject: "Geography",
+                grade: "Std 4-7",
+                rating: 4.7,
+                reviews: 26,
+                experience: "5 Yrs Experience",
+                price: "TZS 12,000 / hr",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250",
+                bio: "Interactive social studies and geography tutor covering Tanzanian physical features and maps."
+            },
+            {
+                id: 6,
+                name: "Teacher Rehema Mollel",
+                subject: "Mathematics",
+                grade: "Std 1-3",
+                rating: 4.9,
+                reviews: 37,
+                experience: "4 Yrs Experience",
+                price: "TZS 10,000 / hr",
+                image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=250",
+                bio: "Focuses on building confidence in numbers, counting, and early problem solving."
+            }
+        ];
+
+        const upcomingClasses = [
+            {
+                title: "Kiswahili Standard 5: Insha & Insha Zote",
+                tutor: "Mwalimu Hassan Ally",
+                time: "Today • 4:00 PM - 5:00 PM",
+                subject: "Kiswahili",
+                grade: "Standard 5",
+                badgeBg: "bg-emerald-100 text-emerald-800"
+            },
+            {
+                title: "Science Std 7: Human Nervous System",
+                tutor: "Teacher Neema Shirima",
+                time: "Tomorrow • 10:00 AM - 11:30 AM",
+                subject: "Science",
+                grade: "Standard 7",
+                badgeBg: "bg-purple-100 text-purple-800"
+            },
+            {
+                title: "Geography Std 6: Solar System & Weather",
+                tutor: "Mwalimu Emmanuel Mtui",
+                time: "Fri • 3:00 PM - 4:00 PM",
+                subject: "Geography",
+                grade: "Standard 6",
+                badgeBg: "bg-rose-100 text-rose-800"
+            }
+        ];
+
+        const libraryBooks = [
+            {
+                id: 1,
+                title: "Standard 6 Mathematics Revision Workbook",
+                subject: "Mathematics",
+                grade: "Standard 6",
+                author: "TopScore Edu Publishers",
+                pages: "120 Pages",
+                chapter: "Fractions and Decimals",
+                excerpt: "In this workbook, primary students practice adding, subtracting, and multiplying decimals with real-life Tanzanian market story examples.",
+                quiz: {
+                    question: "What is 0.75 written as a simplified fraction?",
+                    options: ["1/2", "3/4", "2/5", "4/5"],
+                    answer: 1
+                }
+            },
+            {
+                id: 2,
+                title: "Kiswahili Fasaha: Sarufi na Insha (Std 5-7)",
+                subject: "Kiswahili",
+                grade: "Standard 5-7",
+                author: "Mwalimu Hassan Ally",
+                pages: "98 Pages",
+                chapter: "Sura ya 2: Matumizi ya Methali",
+                excerpt: "Kitabu hiki kinamwezesha mwanafunzi kuelewa nahau, methali, na kuandika insha zenye mtiririko mzuri kwa ajili ya mitihani.",
+                quiz: {
+                    question: "Kamilisha methali: 'Akili ni mali...'",
+                    options: ["mali ni utajiri", "kila mtu ana yake", "haipatikani dukani", "haipotei"],
+                    answer: 1
+                }
+            },
+            {
+                id: 3,
+                title: "Primary English Grammar Guide (Std 4-7)",
+                subject: "English",
+                grade: "Standard 4-7",
+                author: "Grace Kimaro",
+                pages: "110 Pages",
+                chapter: "Tenses & Active/Passive Voice",
+                excerpt: "Master English tenses through simplified charts, fill-in-the-blank drills, and sample sentence construction.",
+                quiz: {
+                    question: "Choose the correct past tense of 'write':",
+                    options: ["Wrote", "Written", "Writing", "Writes"],
+                    answer: 0
+                }
+            },
+            {
+                id: 4,
+                title: "Primary Science & Tech Practice Questions",
+                subject: "Science",
+                grade: "Standard 6-7",
+                author: "TopScore Science Dept",
+                pages: "140 Pages",
+                chapter: "Chapter 3: Plants & Photosynthesis",
+                excerpt: "Explore interactive diagrams of plant cells, photosynthesis, and human digestive anatomy with step-by-step explanations.",
+                quiz: {
+                    question: "Which gas do plants absorb during photosynthesis?",
+                    options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+                    answer: 1
+                }
+            }
+        ];
+
+        let initialHomeworkTasks = [
+            {
+                id: 101,
+                subject: "Mathematics",
+                grade: "Standard 6",
+                question: "Solve for x: 3x + 15 = 45. Please show steps.",
+                status: "Completed",
+                feedback: "Excellent! 3x = 30, so x = 10. Correctly step by step!",
+                tutor: "Mwalimu Juma",
+                time: "1 hour ago"
+            },
+            {
+                id: 102,
+                subject: "Kiswahili",
+                grade: "Standard 6",
+                question: "Taja aina nne za maneno katika sentensi: 'Mtoto msichana anakimbia haraka.'",
+                status: "Under Review",
+                feedback: "Teacher is reviewing your answer submission...",
+                tutor: "Mwalimu Hassan",
+                time: "20 mins ago"
+            }
+        ];
+
+        // NAVIGATION & TAB SWITCHING
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            
+            // Show target
+            const target = document.getElementById('tab-' + tabId);
+            if(target) target.classList.remove('hidden');
+
+            // Update Nav styling
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-navy-light', 'text-white');
+                btn.classList.add('text-slate-200');
+            });
+            const activeNav = document.getElementById('nav-' + tabId);
+            if(activeNav) {
+                activeNav.classList.add('bg-navy-light', 'text-white');
+            }
+
+            // Close mobile menu if open
+            document.getElementById('mobileMenu').classList.add('hidden');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // HERO SEARCH
+        function handleHeroSearch() {
+            const query = document.getElementById('heroSearchInput').value.trim();
+            if(query) {
+                switchTab('teachers');
+                showToast(`Searching directory for: "${query}"`);
+            } else {
+                switchTab('teachers');
+            }
+        }
+
+        // RENDER TEACHERS
+        function renderTeachers() {
+            const subject = document.getElementById('teacherSubjectFilter').value;
+            const grade = document.getElementById('teacherGradeFilter').value;
+            const grid = document.getElementById('teachersGrid');
+
+            const filtered = teachersData.filter(t => {
+                const matchSub = subject === 'All' || t.subject === subject;
+                const matchGrade = grade === 'All' || t.grade === grade;
+                return matchSub && matchGrade;
+            });
+
+            if(filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-dashed border-slate-300">
+                        <i class="fa-solid fa-user-slash text-4xl text-slate-300 mb-2"></i>
+                        <p class="text-slate-600 font-bold">No teachers found matching criteria.</p>
+                        <button onclick="resetTeacherFilters()" class="mt-3 text-xs text-lime-hover font-bold hover:underline">Reset Filters</button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(t => `
+                <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="${t.image}" alt="${t.name}" class="w-14 h-14 rounded-2xl object-cover border-2 border-lime">
+                                <div>
+                                    <h3 class="font-extrabold text-navy text-base">${t.name}</h3>
+                                    <span class="inline-block bg-lime-light text-lime-hover text-xs font-bold px-2.5 py-0.5 rounded-md mt-0.5">${t.subject}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 text-xs text-slate-500 mb-3">
+                            <span class="flex items-center text-amber-500 font-bold"><i class="fa-solid fa-star mr-1"></i> ${t.rating} (${t.reviews})</span>
+                            <span><i class="fa-solid fa-briefcase mr-1"></i> ${t.experience}</span>
+                            <span><i class="fa-solid fa-graduation-cap mr-1"></i> ${t.grade}</span>
+                        </div>
+
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">${t.bio}</p>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                        <div class="font-extrabold text-navy text-sm">${t.price}</div>
+                        <button onclick="openRequestTeacherModal('${t.name}', '${t.subject}', '${t.image}')" class="bg-brandOrange hover:bg-brandOrange-hover text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow">
+                            Request Teacher
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function resetTeacherFilters() {
+            document.getElementById('teacherSubjectFilter').value = 'All';
+            document.getElementById('teacherGradeFilter').value = 'All';
+            renderTeachers();
+        }
+
+        // UPCOMING LIVE CLASSES RENDER
+        function renderUpcomingClasses() {
+            const grid = document.getElementById('upcomingClassesGrid');
+            grid.innerHTML = upcomingClasses.map(c => `
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="${c.badgeBg} text-xs font-bold px-2.5 py-1 rounded-md">${c.subject}</span>
+                        <span class="text-xs font-bold text-slate-400"><i class="fa-solid fa-layer-group mr-1"></i> ${c.grade}</span>
+                    </div>
+                    <h4 class="font-bold text-navy text-base mb-1">${c.title}</h4>
+                    <p class="text-xs text-slate-500 mb-4"><i class="fa-solid fa-chalkboard-user mr-1"></i> ${c.tutor}</p>
+                    <div class="flex items-center justify-between border-t border-slate-100 pt-3 text-xs">
+                        <span class="text-slate-600 font-medium"><i class="fa-solid fa-clock text-lime-hover mr-1"></i> ${c.time}</span>
+                        <button onclick="showToast('Class reminder set! We will notify you via SMS.')" class="text-lime-hover font-bold hover:underline">Remind Me</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // VIRTUAL CLASSROOM SIMULATOR INTERACTION
+        let isDrawing = false;
+        let drawColor = '#8cc63f';
+
+        function initWhiteboard() {
+            const canvas = document.getElementById('whiteboardCanvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            // Adjust canvas dimension to element size
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
+            // Draw initial welcome background text
+            ctx.fillStyle = "#1e293b";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#94a3b8";
+            ctx.font = "14px Inter";
+            ctx.fillText("TopScore Interactive Board - Try writing or drawing below!", 20, 30);
+
+            // Drawing Mouse Events
+            canvas.addEventListener('mousedown', (e) => {
+                isDrawing = true;
+                ctx.beginPath();
+                const rect = canvas.getBoundingClientRect();
+                ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+            });
+
+            canvas.addEventListener('mousemove', (e) => {
+                if(!isDrawing) return;
+                const rect = canvas.getBoundingClientRect();
+                ctx.strokeStyle = drawColor;
+                ctx.lineWidth = 3;
+                ctx.lineCap = 'round';
+                ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+                ctx.stroke();
+            });
+
+            window.addEventListener('mouseup', () => { isDrawing = false; });
+        }
+
+        function setDrawColor(color) { drawColor = color; }
+
+        function clearCanvas() {
+            const canvas = document.getElementById('whiteboardCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = "#090d16";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function toggleBoardMode(mode) {
+            const board = document.getElementById('whiteboardContainer');
+            const video = document.getElementById('videoContainer');
+            const btnB = document.getElementById('btnBoardMode');
+            const btnV = document.getElementById('btnVideoMode');
+
+            if(mode === 'board') {
+                board.classList.remove('hidden');
+                video.classList.add('hidden');
+                btnB.className = "bg-lime text-navy font-bold px-2.5 py-1 rounded text-xs";
+                btnV.className = "bg-slate-700 text-white font-bold px-2.5 py-1 rounded text-xs";
+            } else {
+                board.classList.add('hidden');
+                video.classList.remove('hidden');
+                btnV.className = "bg-lime text-navy font-bold px-2.5 py-1 rounded text-xs";
+                btnB.className = "bg-slate-700 text-white font-bold px-2.5 py-1 rounded text-xs";
+            }
+        }
+
+        function raiseHand() {
+            showToast("✋ You raised your hand! Mwalimu Juma has been notified.");
+        }
+
+        function toggleAudio() {
+            const btn = document.getElementById('micBtn');
+            if(btn.innerText.includes("Muted")) {
+                btn.innerHTML = `<i class="fa-solid fa-microphone text-lime mr-1"></i> Mic On`;
+                showToast("Microphone unmuted");
+            } else {
+                btn.innerHTML = `<i class="fa-solid fa-microphone-slash mr-1"></i> Muted`;
+                showToast("Microphone muted");
+            }
+        }
+
+        function sendLiveChatMessage(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if(!msg) return;
+
+            const chatBox = document.getElementById('liveChatBox');
+            const msgEl = document.createElement('div');
+            msgEl.className = "bg-slate-900/60 p-2.5 rounded-xl border border-slate-800";
+            msgEl.innerHTML = `
+                <div class="flex justify-between font-bold text-brandOrange mb-0.5">
+                    <span>You (Student)</span>
+                    <span class="text-[10px] text-slate-500">Just now</span>
+                </div>
+                <p class="text-slate-200">${msg}</p>
+            `;
+            chatBox.appendChild(msgEl);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            input.value = '';
+
+            // Simulated Tutor reply
+            setTimeout(() => {
+                const tutorEl = document.createElement('div');
+                tutorEl.className = "bg-slate-900/60 p-2.5 rounded-xl border border-slate-800";
+                tutorEl.innerHTML = `
+                    <div class="flex justify-between font-bold text-lime mb-0.5">
+                        <span>Mwalimu Juma (Tutor)</span>
+                        <span class="text-[10px] text-slate-500">Just now</span>
+                    </div>
+                    <p class="text-slate-200">Thanks for your message! Keep up the great work.</p>
+                `;
+                chatBox.appendChild(tutorEl);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1200);
+        }
+
+        // HOMEWORK HELP LOGIC
+        function renderHomeworkTasks() {
+            const container = document.getElementById('homeworkTrackerList');
+            container.innerHTML = initialHomeworkTasks.map(t => `
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-lime transition">
+                    <div class="flex justify-between items-start gap-2 mb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="bg-navy text-white text-[10px] font-bold px-2 py-0.5 rounded">${t.subject}</span>
+                            <span class="text-xs font-bold text-slate-500">${t.grade}</span>
+                        </div>
+                        <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full ${t.status === 'Completed' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
+                            ${t.status}
+                        </span>
+                    </div>
+                    <p class="font-medium text-navy text-sm mb-2">"${t.question}"</p>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
+                        <div class="font-bold text-lime-hover"><i class="fa-solid fa-comment-dots mr-1"></i> Teacher Feedback (${t.tutor}):</div>
+                        <div>${t.feedback}</div>
+                    </div>
+                    <div class="text-[10px] text-slate-400 mt-2 text-right">${t.time}</div>
+                </div>
+            `).join('');
+        }
+
+        function handleHomeworkSubmit(e) {
+            e.preventDefault();
+            const subject = document.getElementById('hwSubject').value;
+            const grade = document.getElementById('hwGrade').value;
+            const question = document.getElementById('hwQuestion').value;
+
+            const newTask = {
+                id: Date.now(),
+                subject: subject,
+                grade: grade,
+                question: question,
+                status: "Under Review",
+                feedback: "Submitted successfully. Our subject teacher is reviewing...",
+                tutor: "TopScore Tutor",
+                time: "Just now"
+            };
+
+            initialHomeworkTasks.unshift(newTask);
+            renderHomeworkTasks();
+            
+            // Update stats
+            document.getElementById('statPending').innerText = parseInt(document.getElementById('statPending').innerText) + 1;
+
+            showToast("Homework submitted successfully! Check feedback soon.");
+            document.getElementById('hwQuestion').value = '';
+            document.getElementById('fileNameDisplay').innerText = "Click to upload homework photo / PDF";
+        }
+
+        function updateFileName(input) {
+            if(input.files && input.files[0]) {
+                document.getElementById('fileNameDisplay').innerText = "Selected: " + input.files[0].name;
+            }
+        }
+
+        // LIBRARY BOOKS RENDER
+        function renderLibrary(subjectFilter = 'All') {
+            const grid = document.getElementById('booksGrid');
+            const filtered = subjectFilter === 'All' ? libraryBooks : libraryBooks.filter(b => b.subject === subjectFilter);
+
+            grid.innerHTML = filtered.map(b => `
+                <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-36 bg-gradient-to-br from-navy to-navy-light rounded-2xl flex flex-col justify-between p-4 text-white mb-4 shadow">
+                            <span class="bg-lime/20 text-lime text-[10px] font-bold px-2 py-0.5 rounded self-start">${b.subject}</span>
+                            <div>
+                                <h4 class="font-bold text-sm leading-tight text-white">${b.title}</h4>
+                                <span class="text-[10px] text-slate-300">${b.grade}</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-2 font-medium">By ${b.author} • ${b.pages}</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">${b.excerpt}</p>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between mt-4">
+                        <button onclick="openBookModal(${b.id})" class="w-full bg-navy hover:bg-navy-light text-white text-xs font-bold py-2.5 rounded-xl transition">
+                            <i class="fa-solid fa-book-open mr-1 text-lime"></i> Read & Practice Quiz
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterLibrary(subj) {
+            document.querySelectorAll('.lib-tab').forEach(btn => {
+                btn.className = "lib-tab bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-slate-300";
+            });
+            event.target.className = "lib-tab active bg-navy text-white px-3 py-1.5 rounded-lg text-xs font-bold";
+            renderLibrary(subj);
+        }
+
+        // MODAL HELPERS
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        function setAuthRole(role) {
+            const studentBtn = document.getElementById('roleStudentBtn');
+            const teacherBtn = document.getElementById('roleTeacherBtn');
+            const studentFields = document.getElementById('studentFields');
+            const teacherFields = document.getElementById('teacherFields');
+
+            if(role === 'student') {
+                studentBtn.className = "flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow text-navy";
+                teacherBtn.className = "flex-1 py-2 text-xs font-bold rounded-lg text-slate-600";
+                studentFields.classList.remove('hidden');
+                teacherFields.classList.add('hidden');
+            } else {
+                teacherBtn.className = "flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow text-navy";
+                studentBtn.className = "flex-1 py-2 text-xs font-bold rounded-lg text-slate-600";
+                teacherFields.classList.remove('hidden');
+                studentFields.classList.add('hidden');
+            }
+        }
+
+        function handleAuthSubmit(e) {
+            e.preventDefault();
+            closeModal('authModal');
+            showToast("Welcome to TopScore Academy! Account created successfully.");
+        }
+
+        function openRequestTeacherModal(name, subject, image) {
+            document.getElementById('modalTeacherName').innerText = name;
+            document.getElementById('modalTeacherSubject').innerText = subject;
+            document.getElementById('modalTeacherImg').src = image;
+            openModal('requestTeacherModal');
+        }
+
+        function handleRequestTeacherSubmit(e) {
+            e.preventDefault();
+            closeModal('requestTeacherModal');
+            showToast("Teacher request sent! You will receive confirmation via SMS.");
+        }
+
+        // PAYMENT MODAL SETUP
+        function openPaymentModal(title = 'Monthly Plan Subscription', amount = '35000') {
+            document.getElementById('payPackageTitle').innerText = title;
+            document.getElementById('payPackageAmount').innerText = 'TZS ' + parseInt(amount).toLocaleString();
+            openModal('paymentModal');
+        }
+
+        function handlePaymentSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('paySubmitBtn');
+            btn.innerText = "Processing Payment Request...";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerText = "Pay Now via Mobile Money";
+                btn.disabled = false;
+                closeModal('paymentModal');
+                showToast("Payment Successful! Receipt sent to +255 765 005 391");
+            }, 2000);
+        }
+
+        // BOOK READER MODAL SETUP
+        let activeBook = null;
+
+        function openBookModal(bookId) {
+            activeBook = libraryBooks.find(b => b.id === bookId);
+            if(!activeBook) return;
+
+            document.getElementById('bookModalTitle').innerText = activeBook.title;
+            document.getElementById('bookModalSubject').innerText = activeBook.subject + " • " + activeBook.grade;
+            document.getElementById('bookChapterTitle').innerText = activeBook.chapter;
+            document.getElementById('bookExcerptText').innerText = activeBook.excerpt;
+
+            // Quiz rendering
+            document.getElementById('quizQuestion').innerText = activeBook.quiz.question;
+            const optsContainer = document.getElementById('quizOptionsContainer');
+            optsContainer.innerHTML = activeBook.quiz.options.map((opt, idx) => `
+                <button onclick="checkQuizAnswer(${idx})" class="w-full text-left p-3 rounded-xl border border-slate-200 hover:border-lime bg-white transition font-medium text-xs text-slate-700 flex items-center justify-between">
+                    <span>${opt}</span>
+                    <i class="fa-regular fa-circle text-slate-400"></i>
+                </button>
+            `).join('');
+
+            document.getElementById('quizFeedback').classList.add('hidden');
+            toggleBookTab('read');
+            openModal('bookReaderModal');
+        }
+
+        function toggleBookTab(tab) {
+            const readView = document.getElementById('bookReadView');
+            const quizView = document.getElementById('bookQuizView');
+            const readBtn = document.getElementById('bookTabReadBtn');
+            const quizBtn = document.getElementById('bookTabQuizBtn');
+
+            if(tab === 'read') {
+                readView.classList.remove('hidden');
+                quizView.classList.add('hidden');
+                readBtn.className = "px-4 py-2 text-xs font-bold border-b-2 border-lime text-lime";
+                quizBtn.className = "px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-navy";
+            } else {
+                readView.classList.add('hidden');
+                quizView.classList.remove('hidden');
+                quizBtn.className = "px-4 py-2 text-xs font-bold border-b-2 border-lime text-lime";
+                readBtn.className = "px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-navy";
+            }
+        }
+
+        function checkQuizAnswer(selectedIdx) {
+            const feedback = document.getElementById('quizFeedback');
+            feedback.classList.remove('hidden');
+
+            if(selectedIdx === activeBook.quiz.answer) {
+                feedback.className = "mt-3 p-3 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300";
+                feedback.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> Correct! Outstanding job! +20 Star Points added!`;
+                // add points
+                document.getElementById('statPoints').innerText = parseInt(document.getElementById('statPoints').innerText) + 20;
+            } else {
+                feedback.className = "mt-3 p-3 rounded-xl text-xs font-bold bg-rose-100 text-rose-800 border border-rose-300";
+                feedback.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1"></i> Not quite right. Try again!`;
+            }
+        }
+
+        // TOAST NOTIFICATION UTILITY
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        // INITIALIZE ON LOAD
+        window.onload = function() {
+            renderTeachers();
+            renderUpcomingClasses();
+            renderHomeworkTasks();
+            renderLibrary();
+            initWhiteboard();
+        };
+    </script>
+</body>
+</html>
